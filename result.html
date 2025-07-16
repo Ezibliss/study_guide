@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study App - Result</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css?v=2" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Result</h1>
+        <div class="result-content">
+            <div class="row">
+                <div class="col-12 text-center mb-3">
+                    <img src="{{ url_for('static', filename='studylogo.png') }}" alt="Logo" class="img-fluid" style="max-height: 100px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="h5">Extracted Text from Document:</h2>
+                    <p class="text-break">{{ extracted_text }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="h5">Your Question:</h2>
+                    <p>{{ question }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="h5">Answer:</h2>
+                    {% if answer %}
+                        {% set lines = answer.split('\n') %}
+                        {% set has_list = false %}
+                        {% for line in lines %}
+                            {% if line.strip() and ((line.strip()[0].isalpha() and '.' in line.strip()) or (line.strip()[0].isdigit() and '.' in line.strip())) %}
+                                {% set has_list = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if has_list %}
+                            <ol class="list-group list-group-numbered mb-3">
+                                {% for line in lines %}
+                                    {% if line.strip() and ((line.strip()[0].isalpha() and '.' in line.strip()) or (line.strip()[0].isdigit() and '.' in line.strip())) %}
+                                        {% set item = line.strip() | replace('**', '') | trim | replace(':', '') %}
+                                        <li class="list-group-item">{{ item | safe }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ol>
+                            {% if "Chapter 1" in answer or "context" in answer %}
+                                <p class="text-muted small">This list is derived directly from the document's Chapter 1. If you need more details or clarification, let me know based on the available context.</p>
+                            {% endif %}
+                        {% else %}
+                            <p class="text-break">{{ answer | safe }}</p>
+                        {% endif %}
+                    {% else %}
+                        <p>No answer available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('home') }}" class="mt-4">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="mb-3">
+                <label for="question" class="form-label">Ask another question:</label>
+                <textarea class="form-control" id="question" name="question" placeholder="Enter your question" rows="3"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <div class="text-center mt-4">
+            <p><a href="{{ url_for('home') }}" class="btn btn-secondary">Back to Home</a></p>
+        </div>
+    </div>
+    <!-- Bootstrap JS CDN (optional, for components like modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.bundle.min.js?v=5"></script>
+</body>
+</html>

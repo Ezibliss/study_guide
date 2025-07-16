@@ -1,0 +1,17 @@
+<!-- templates/429.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rate Limit Reached</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css?v=2" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+    <h1>Too Many Requests</h1>
+    <p>{{ message }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.bundle.min.js?v=5"></script>
+
+</body>
+</html>
