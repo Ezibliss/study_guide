@@ -25,4 +25,6 @@ flask_cors
 sentence-transformers
 openai
 faiss-cpu
+email-validator
+
 
