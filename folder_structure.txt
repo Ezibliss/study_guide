@@ -1,0 +1,41 @@
+Folder PATH listing
+Volume serial number is 9E71-903D
+C:.
+¦   .env
+¦   .gitignore
+¦   AI dark.jpg
+¦   AI Study.jpg
+¦   app.py
+¦   app3-Copy1.py
+¦   database.db
+¦   folder_structure.txt
+¦   requirements.txt
+¦   Studylogo.png
+¦   
++---.vscode
+¦       settings.json
+¦       
++---flask_session
+¦       2029240f6d1128be89ddc32729463129
+¦       501870e0365dff31cc95523a683a9472
+¦       
++---instance
+¦       database.db
+¦       database1.db
+¦       
++---static
+¦   +---css
+¦           custom.css
+¦           
++---templates
+¦       dashboard.html
+¦       home.html
+¦       iii.html
+¦       login.html
+¦       register.html
+¦       result.html
+¦       
++---__pycache__
+        app.cpython-312.pyc
+        app.cpython-313.pyc
+        

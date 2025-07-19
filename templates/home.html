@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css?v=2" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='studylogo.png') }}" alt="Logo" class="logo">
+        <h1>Home Page</h1>
+        <p>Welcome to AI Study Protal! Please Login</p></br>
+        <p>To access your dashboard, please login or register.</p>
+        <div class="nav-links">
+            <a href="{{url_for('login')}}">Login</a></br>
+            <a href="{{url_for('register')}}">Register</a></br>
+            <a href="{{ url_for('home') }}">Upload a Document</a></br>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.bundle.min.js?v=5"></script>
+
+</body>
+</html>
