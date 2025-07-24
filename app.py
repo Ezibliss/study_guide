@@ -238,7 +238,7 @@ def home():
         # Process the document and question as needed
         if question and text:
             # Step 1: Split into chunks
-            splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+            splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
             docs = [Document(page_content=chunk) for chunk in splitter.split_text(text)]
             print(f"Number of document chunks: {len(docs)}")  # Debug: Chunk count
 
