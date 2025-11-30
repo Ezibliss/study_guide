@@ -26,5 +26,5 @@ sentence-transformers
 openai
 faiss-cpu
 email-validator
-
+langchain-text-splitters
 
