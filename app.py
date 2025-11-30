@@ -9,11 +9,11 @@ from wtforms import BooleanField, StringField, PasswordField, SubmitField, valid
 from wtforms.validators import InputRequired, DataRequired, Email, Length, EqualTo, ValidationError
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
-from langchain.text_splitter import CharacterTextSplitter
+from langchain_text_splitters import CharacterTextSplitter
 from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
 from langchain_openai import ChatOpenAI
-from langchain.chains import RetrievalQA
+from langchain_community.chains import RetrievalQA
 import os
 import fitz  # PyMuPDF
 import docx
